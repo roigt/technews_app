@@ -10,8 +10,9 @@
                 <a
                     href="{{route('category.create')}}"
                     class="btn btn-primary float-right veiwbutton"
-                >Ajouter une categorie</a
-                >
+                >Ajouter une categorie
+
+                </a>
             </div>
         </div>
     </div>
@@ -30,23 +31,45 @@
                                 <th>ID Categorie</th>
                                 <th>Nom</th>
                                 <th>Description</th>
+                                <th>Statut</th>
                                 <th class="text-right">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>CAT-0001</td>
-                                <td>Nom categorie</td>
-                                <td>Breve description</td>
-                                <td class="text-right">
-                                    <div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href="edit-categorie.html"><i class="fas fa-pencil-alt m-r-5"></i> Modifier</a> <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Supprimer</a> </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach($categories as $category)
+                                <tr>
+                                    <td>#00-{{$category->id}}</td>
+                                    <td>{{$category->name}}</td>
+                                    <td>{{$category->description}}</td>
+                                    <td class="text-left">
+                                        <span class="badge badge-pill {{ $category->isActive ? 'bg-success-light' : 'bg-danger-light' }} p-2">
+                                            {{$category->isActive ==1 ? 'ACTIVE' : 'DESACTIVE'}}
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="{{route('category.edit',$category)}}"><i class="fas fa-pencil-alt m-r-5"></i> Modifier</a>
 
+                                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#delete_asset">
+                                                   <form action="{{route('category.destroy',$category)}}" method="POST">
+                                                       @csrf
+                                                       @method('DELETE')
+
+                                                       <button type="submit" class="btn btn-danger">
+                                                           <i class="fas fa-trash-alt m-r-5"></i> Supprimer
+                                                       </button>
+
+                                                   </form>
+
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
-
                             <div id="delete_asset" class="modal fade delete-modal" role="dialog">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">

@@ -35,6 +35,44 @@
 {{-- Scripts dashboard --}}
 @include('back.partials.scripts')
 {{-- Fin Script Dashboard --}}
+
+
+{{-- alert personnaliser avec izi toast--}}
+@if(session()->get('error'))
+    <script>
+        iziToast.error({
+            title:"Erreur",
+            position:"topCenter",
+            message:"{{session()->get('error')}}",
+        })
+    </script>
+
+@endif
+
+@if(session()->get('success'))
+    <script>
+        iziToast.success({
+            title:"Success",
+            position:"topCenter",
+            message:"{{session()->get('success')}}",
+        })
+    </script>
+
+@endif
+
+
+
+{{-- alert personnaliser avec izi toast pour les statuts--}}
+@if(session()->get('status'))
+    <script>
+        iziToast.success({
+            title:"Success",
+            position:"topCenter",
+            message:"{{session()->get('status')}}",
+        })
+    </script>
+@endif
+
 </body>
 </html>
 
