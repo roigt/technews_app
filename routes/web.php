@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,14 @@ require __DIR__.'/auth.php';
  */
 Route::resource('/category',CategoryController::class);
 
-
 /**
  * fin categorie
+ */
+
+/**
+ * partie arcticle
+ */
+Route::resource('/article',ArticleController::class);
+/**
+ * fin partie article
  */

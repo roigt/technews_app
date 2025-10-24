@@ -14,6 +14,25 @@
 @endsection
 
 @section('dashboard-content')
+    @if ($errors->any())
+        <div id="errorAlert" class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+
+        <script>
+            setTimeout(() => {
+                const alert = document.getElementById('errorAlert');
+                if (alert) {
+                    alert.style.display = 'none';
+                }
+            }, 3000);
+        </script>
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             <div class="profile-header">
@@ -85,10 +104,9 @@
                                                     <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label>Photo de profile</label>
-                                                            <input type="file" name="image" class="form-control"> </div>
+                                                            <input type="file" name="image" class="form-control">
+                                                        </div>
                                                     </div>
-
-
                                                 </div>
                                                 <button type="submit" class="btn btn-primary btn-block">Enregistrer les modifications</button>
                                             </form>
