@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('admin-access',function($user){
-            return $user->roles->pluck('name')->toArray()==['admin','author'];
+            return in_array('admin',$user->roles->pluck('name')->toArray());
         });
     }
 }
