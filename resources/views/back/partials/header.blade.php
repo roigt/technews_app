@@ -10,13 +10,14 @@
             />
             <span class="logoclass">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
         </a>
-        <a href="index.html" class="logo logo-small">
+        <a href="{{'profile.edit'}}" class="logo logo-small">
             <img
                 src="{{asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image)}}"
                 alt="Logo"
-                width="30"
-                height="30"
+                width="40"
+                height="40"
             />
+
         </a>
     </div>
     <a href="javascript:void(0);" id="toggle_btn">

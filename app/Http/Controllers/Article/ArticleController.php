@@ -49,7 +49,7 @@ class ArticleController extends Controller
         if($image!=null && !$request->file('image')->getError()){
             $image= $request->image->store('asset','public');
         }
-        //fin
+        //fin  et en deploiement toujours lancer "php artisan storage:link" pour lier le dossier storage/app/public à app/public
 
         $tags = explode(',',$request->tags);
 
