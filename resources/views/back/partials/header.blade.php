@@ -32,7 +32,7 @@
                       class="rounded-circle"
                       src="{{asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image)}}"
                       width="31"
-                      alt="John Doe"
+                      alt="{{\Illuminate\Support\Facades\Auth::user()->name}}"
                   /></span>
             </a>
             <div class="dropdown-menu">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="user-text">
                         <h6>{{\Illuminate\Support\Facades\Auth::user()->name}}</h6>
-                        <p class="text-muted mb-0">Administrateur</p>
+                        <p class="text-muted mb-0">{{\Illuminate\Support\Facades\Auth::user()->roles->pluck('name')->first()}}</p>
                     </div>
                 </div>
                 <a class="dropdown-item" href="{{route('profile.edit')}}">Profile</a>

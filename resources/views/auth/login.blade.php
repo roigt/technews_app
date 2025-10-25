@@ -4,6 +4,12 @@
 
 @section('auth-form')
     <h1>Connexion</h1>
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <p class="account-subtitle">Acceder au dashboard</p>
     <form action="{{route('login')}}" method="POST">
         @csrf

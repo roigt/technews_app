@@ -19,62 +19,66 @@
                         <li><a href="{{route('article.create')}}"> Ajouter un article </a></li>
                     </ul>
                 </li>
-                <li class="submenu">
-                    <a href="#"
-                    ><i class="fas fa-book"></i> <span> Catégories </span>
-                        <span class="menu-arrow"></span
-                        ></a>
-                    <ul class="submenu_class" style="display: none">
-                        <li>
-                            <a href="{{route('category.index')}}"> Tous les catégories </a>
-                        </li>
-
-                        <li>
-                            <a href="{{route('category.create')}}"> Ajouter une catégorie </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="submenu">
-                    <a href="#"
-                    ><i class="fas fa-user"></i> <span> Auteurs </span>
-                        <span class="menu-arrow"></span
-                        ></a>
-                    <ul class="submenu_class" style="display: none">
-                        <li><a href="all-author.html">Tous les auteurs </a></li>
-                        <li>
-                            <a href="add-author.html"> Ajouter un auteur </a>
-                        </li>
-                    </ul>
-                </li>
                 <li>
                     <a href="all-comments.html"
                     ><i class="fe fe-table"></i> <span>Commentaires</span></a
                     >
                 </li>
 
-                <li class="submenu">
-                    <a href="#"
-                    ><i class="far fa-money-bill-alt"></i>
-                        <span> Medias Sociaux </span> <span class="menu-arrow"></span
-                        ></a>
-                    <ul class="submenu_class" style="display: none">
-                        <li><a href="all-social-media.html">Tous les medias </a></li>
-                        <li><a href="add-social-media.html">Ajouter un media </a></li>
-                    </ul>
-                </li>
+                @can('admin-access'){{-- cacher category au autre user a part admin--}}
+                    <li class="submenu">
+                        <a href="#"
+                        ><i class="fas fa-book"></i> <span> Catégories </span>
+                            <span class="menu-arrow"></span
+                            ></a>
+                        <ul class="submenu_class" style="display: none">
+                            <li>
+                                <a href="{{route('category.index')}}"> Tous les catégories </a>
+                            </li>
 
-                <li>
-                    <a href="all-contacts.html"
-                    ><i class="fe fe-table"></i> <span>Contacts</span></a
-                    >
-                </li>
+                            <li>
+                                <a href="{{route('category.create')}}"> Ajouter une catégorie </a>
+                            </li>
+                        </ul>
+                    </li>
 
-                <li>
-                    <a href="settings.html"
-                    ><i class="fas fa-cog"></i> <span>Paramètres</span></a
-                    >
-                </li>
+
+                    <li class="submenu">
+                        <a href="#"
+                        ><i class="fas fa-user"></i> <span> Auteurs </span>
+                            <span class="menu-arrow"></span
+                            ></a>
+                        <ul class="submenu_class" style="display: none">
+                            <li><a href="{{route('author.index')}}">Tous les auteurs </a></li>
+                            <li>
+                                <a href="{{route('author.create')}}"> Ajouter un auteur </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="#"
+                        ><i class="far fa-money-bill-alt"></i>
+                            <span> Medias Sociaux </span> <span class="menu-arrow"></span
+                            ></a>
+                        <ul class="submenu_class" style="display: none">
+                            <li><a href="{{route('social.index')}}">Tous les medias </a></li>
+                            <li><a href="{{route('social.create')}}">Ajouter un media </a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="all-contacts.html"
+                        ><i class="fe fe-table"></i> <span>Contacts</span></a
+                        >
+                    </li>
+
+                    <li>
+                        <a href="{{route('settings.index')}}"
+                        ><i class="fas fa-cog"></i> <span>Paramètres</span></a
+                        >
+                    </li>
+                @endcan
 
                 <li class="submenu">
                     <a href="#"

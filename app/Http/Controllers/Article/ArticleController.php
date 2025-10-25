@@ -17,11 +17,15 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('back.article.index',
-              [
-                  'articles' => Article::all()
-              ]
-        );
+
+        //verfie si c'est l admin
+        if(in_array('admin',Auth::user()->roles->pluck('name')->toArray())){
+            $articles=Article::all();
+        }else{
+            $articles=Article::where('author_id', Auth::user()->id)->get();
+        }
+
+        return view('back.article.index',compact('articles'));
     }
     /**
      * Show the form for creating a new resource.
