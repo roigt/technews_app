@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/paris',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,9 +78,10 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => 'fr',
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => 'fr',
+     setlocale(LC_TIME, 'fr_FR.UTF-8'),
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 

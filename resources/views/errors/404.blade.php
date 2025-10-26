@@ -15,7 +15,7 @@
         <h1>404</h1>
         <h3 class="h2 mb-3"><i class="fas fa-exclamation-triangle"></i> Oops! Page non trouve!</h3>
         <p class="h4 font-weight-normal">La page que vous cherchez n'existe pas.</p>
-        <a href="/dashboard" class="btn btn-primary">Retounez a la page d'accueil</a>
+        <a href="{{ url()->previous() }}" class="btn btn-primary">Retour à la page précédente</a>
     </div>
 </div>
 

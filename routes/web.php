@@ -2,16 +2,27 @@
 
 use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Detail\DetailController;
+use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\settings\SettingsController;
 use App\Http\Controllers\SocialMedia\SocialMediaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//page d'accueil
+Route::get('/', [HomeController::class, 'index'])->name('home');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+//page detail article
+Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('article.detail');
+
+//commentaires
+Route::post('/comment/{id}', [DetailController::class, 'comment'])->name('comment');
 
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth', 'verified','checkRole:admin,author'])->name('dashboard');
 
