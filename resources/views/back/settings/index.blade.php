@@ -7,7 +7,16 @@
 @section('dashboard-content')
     <div class="row">
         <div class="col-lg-12">
-            <form action="{{route('settings.update')}}" method="POST">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form action="{{route('settings.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <h3 class="page-title">Paramètres de base</h3>
@@ -18,7 +27,7 @@
                             >Nom du site <span class="text-danger">*</span></label
                             >
                             <input class="form-control" type="text" name="web_site_name"
-                                   value="{{isset($settings) ? old('web_site_name',$settings->web_site_name) : old('web_site_name')}}" />
+                                   value="{{isset($global_settings) ? old('web_site_name',$global_settings->web_site_name) : old('web_site_name')}}" />
                         </div>
                     </div>
 
@@ -44,7 +53,7 @@
                             <label>Address</label>
                             <input
                                 class="form-control"
-                                value="{{isset($settings)? old('address',$settings->address) : old('address')}}"
+                                value="{{isset($global_settings)? old('address',$global_settings->address) : old('address')}}"
                                 type="text"
                                 name="address"
                             />
@@ -55,7 +64,7 @@
                             <label>Numero de telephone</label>
                             <input
                                 class="form-control"
-                                value="{{isset($settings)? old('phone',$settings->phone) : old('phone')}}"
+                                value="{{isset($global_settings)? old('phone',$global_settings->phone) : old('phone')}}"
                                 type="text"
                                 name="phone"
                             />
@@ -67,7 +76,7 @@
                             <label>Email</label>
                             <input
                                 class="form-control"
-                                value="{{isset($settings)? old('email',$settings->email) : old('email')}}"
+                                value="{{isset($global_settings)? old('email',$global_settings->email) : old('email')}}"
                                 type="text"
                                 name="email"
                             />
@@ -84,7 +93,7 @@
                                 name="about"
 
                             >
-                                {{isset($settings)? old('about',$settings->about) : old('about')}}
+                                {{isset($global_settings)? old('about',$global_settings->about) : old('about')}}
                             </textarea>
                         </div>
                     </div>

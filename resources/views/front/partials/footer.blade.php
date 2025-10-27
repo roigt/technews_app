@@ -5,115 +5,59 @@
                 Contactez nous
             </h5>
             <p class="font-weight-medium">
-                <i class="fa fa-map-marker-alt mr-2"></i>area City, Country
+                <i class="fa fa-map-marker-alt mr-2"></i>{{$global_settings->address}}
             </p>
             <p class="font-weight-medium">
-                <i class="fa fa-phone-alt mr-2"></i>+012 345 67890
+                <i class="fa fa-phone-alt mr-2"></i>{{$global_settings->phone }}
             </p>
             <p class="font-weight-medium">
-                <i class="fa fa-envelope mr-2"></i>info@example.com
+                <i class="fa fa-envelope mr-2"></i>{{$global_settings->email}}
             </p>
             <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">
                 Suivez nous
             </h6>
             <div class="d-flex justify-content-start">
-                <a
-                    class="btn btn-lg btn-secondary btn-lg-square mr-2"
-                    href="wwww.freewebsitecode.com"
-                ><i class="fab fa-twitter"></i
-                    ></a>
-                <a
-                    class="btn btn-lg btn-secondary btn-lg-square mr-2"
-                    href="https://www.facebook.com/FreeWebsiteCode/"
-                ><i class="fab fa-facebook-f"></i
-                    ></a>
-                <a
-                    class="btn btn-lg btn-secondary btn-lg-square mr-2"
-                    href="wwww.freewebsitecode.com"
-                ><i class="fab fa-linkedin-in"></i
-                    ></a>
-                <a
-                    class="btn btn-lg btn-secondary btn-lg-square mr-2"
-                    href="wwww.freewebsitecode.com"
-                ><i class="fab fa-instagram"></i
-                    ></a>
-                <a
-                    class="btn btn-lg btn-secondary btn-lg-square"
-                    href="https://www.youtube.com/channel/UC9HlQRmKgG3jeVD_fBxj1Pw/videos"
-                ><i class="fab fa-youtube"></i
-                    ></a>
+                <ul class="d-flex justify-content-start">
+                    @foreach($global_social as $item)
+                        <li class="nav-item" style="list-style: none;">
+                            <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="{{ $item->link }}">
+                                <i class="{{ $item->icon }}"></i>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">
                 Infos Populaires
             </h5>
-            <div class="mb-3">
-                <div class="mb-2">
-                    <a
-                        class="badge badge-info text-uppercase font-weight-semi-bold p-1 mr-2"
-                        href=""
-                    >Business</a
-                    >
-                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+            @foreach($global_famous_articles as $article)
+                <div class="mb-3">
+                    <div class="mb-2">
+                        <a class="badge badge-info text-uppercase font-weight-semi-bold p-1 mr-2"
+                            href="">{{$article->category->name}}>
+                        </a>
+                        <a class="text-body" href="">
+                            @php $time= $article->created_at @endphp
+                            <small>{{$time->isoFormat('LL')}}</small>
+                        </a>
+                    </div>
+                    <a class="small text-body text-uppercase font-weight-medium"
+                       href="{{route('article.detail',$article->slug)}}">{{$article->title}}
+                    </a>
                 </div>
-                <a class="small text-body text-uppercase font-weight-medium" href=""
-                >Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a
-                >
-            </div>
-            <div class="mb-3">
-                <div class="mb-2">
-                    <a
-                        class="badge badge-info text-uppercase font-weight-semi-bold p-1 mr-2"
-                        href=""
-                    >Business</a
-                    >
-                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                </div>
-                <a class="small text-body text-uppercase font-weight-medium" href=""
-                >Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a
-                >
-            </div>
-            <div class="">
-                <div class="mb-2">
-                    <a
-                        class="badge badge-info text-uppercase font-weight-semi-bold p-1 mr-2"
-                        href=""
-                    >Business</a
-                    >
-                    <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                </div>
-                <a class="small text-body text-uppercase font-weight-medium" href=""
-                >Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a
-                >
-            </div>
+            @endforeach
+
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">
                 Catégories
             </h5>
             <div class="m-n1">
-                <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+                @foreach($global_category as $category)
+                    <a href="{{route('category.article',$category->slug)}}" class="btn btn-sm btn-secondary m-1">{{$category->name}}</a>
+                @endforeach
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
@@ -121,36 +65,14 @@
                 Flickr Photos
             </h5>
             <div class="row">
-                <div class="col-4 mb-3">
-                    <a href=""
-                    ><img class="w-100" src="img/news-110x110-1.jpg" alt=""
-                        /></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""
-                    ><img class="w-100" src="img/news-110x110-2.jpg" alt=""
-                        /></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""
-                    ><img class="w-100" src="img/news-110x110-3.jpg" alt=""
-                        /></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""
-                    ><img class="w-100" src="img/news-110x110-4.jpg" alt=""
-                        /></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""
-                    ><img class="w-100" src="img/news-110x110-5.jpg" alt=""
-                        /></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""
-                    ><img class="w-100" src="img/news-110x110-1.jpg" alt=""
-                        /></a>
-                </div>
+                @foreach($global_recent_articles as $article)
+                    <div class="col-4 mb-3">
+                        <a href="{{route('article.detail',$article->slug)}}"
+                        ><img class="w-100" src="{{$article->getImageUrl()}}" alt="{{$article->title}}"
+                            /></a>
+                    </div>
+                @endforeach
+
             </div>
         </div>
     </div>
@@ -160,7 +82,7 @@
     style="background: #111111"
 >
     <p class="m-0 text-center">
-        &copy; <a href="#">Your Site Name</a>. All Rights Reserved. Design by
+        &copy; <a href="#">{{$global_settings->web_site_name}}</a>. All Rights Reserved. Design by
         <a href="https://freewebsitecode.com">Freewebsitecode</a><br />
     </p>
 </div>

@@ -23,7 +23,7 @@ class SettingsRequest extends FormRequest
     {
         return [
             'web_site_name'=>['required','string'],
-            'logo'=>['image','nullable','mimes:png,jpg,jpeg','max:2048'],
+            'logo' => ['nullable', 'image', 'mimes:png,jpg,jpeg,gif'],
             'address'=>['nullable','string'],
             'phone'=>['nullable','string'],
             'email'=>['nullable','string'],
@@ -35,6 +35,10 @@ class SettingsRequest extends FormRequest
     {
         return [
             'web_site_name.required'    => "Le nom du site est obligatoire." ,
+            'about.required'             => "La description du site est obligatoire.",
+            'logo.image' => "Le fichier doit être une image valide (PNG, JPG, etc.).",
+            'mimes'      => "Le logo doit être au format png, jpg, jpeg ou gif.",
+
         ];
     }
 }
