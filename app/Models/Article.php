@@ -40,7 +40,9 @@ public function getSlugOptions(): SlugOptions
     public function getImageUrl():string
     {
         //return Storage::url($this->image);
-        return Storage::disk('s3')->url($this->image)? Storage::disk('s3')->url($this->image):asset('back_auth/assets/img/logo.png');
+        return !empty($this->image)
+            ? Storage::disk('s3')->url($this->image)
+            : asset('back_auth/assets/img/logo.png');
     }
 
     public function category(): BelongsTo
