@@ -84,7 +84,7 @@
     style="background: #111111"
 >
     <p class="m-0 text-center">
-        &copy; <a href="#">{{$global_settings->web_site_name}}</a>. All Rights Reserved. Design by
+        &copy; <a href="#">{{$global_settings->web_site_name?? 'Adresse non définie'}}</a>. All Rights Reserved. Design by
         <a href="https://freewebsitecode.com">Freewebsitecode</a><br />
     </p>
 </div>
