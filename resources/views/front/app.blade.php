@@ -8,7 +8,7 @@
     <meta content="Free HTML Templates" name="description" />
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
+    <link href="{{route('home')}}" rel="icon" />
 
     <!-- Liens du head -->
     @include('front.partials.styles')
