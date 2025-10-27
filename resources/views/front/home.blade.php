@@ -130,7 +130,7 @@
                 @foreach($famous_articles as $article)
                     <div class="position-relative overflow-hidden" style="height: 300px">
                         <img
-                            class="img-fluid h-100"
+                            class="img-fluid h-100 "
                             src="{{$article->getImageUrl()}}"
                             style="object-fit: cover"
                         />

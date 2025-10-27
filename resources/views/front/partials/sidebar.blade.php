@@ -102,7 +102,11 @@
                     class="d-flex align-items-center bg-white mb-3"
                     style="height: 110px"
                 >
-                    <img class="img-fluid" width="110px" height="90%" src="{{$article->getImageUrl()}}" alt="" />
+                    <img
+                        src="{{ $article->getImageUrl() }}"
+                        alt=""
+                        style="width: 100px; height: 100%; object-fit: cover;"
+                    />
                     <div
                         class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0"
                     >
