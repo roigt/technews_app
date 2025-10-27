@@ -4,18 +4,20 @@
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">
                 Contactez nous
             </h5>
-            <p class="font-weight-medium">
-                <i class="fa fa-map-marker-alt mr-2"></i>{{$global_settings->address}}
-            </p>
-            <p class="font-weight-medium">
-                <i class="fa fa-phone-alt mr-2"></i>{{$global_settings->phone }}
-            </p>
-            <p class="font-weight-medium">
-                <i class="fa fa-envelope mr-2"></i>{{$global_settings->email}}
-            </p>
-            <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">
-                Suivez nous
-            </h6>
+            @if($global_settings)
+                <p class="font-weight-medium">
+                    <i class="fa fa-map-marker-alt mr-2"></i>{{$global_settings->address}}
+                </p>
+                <p class="font-weight-medium">
+                    <i class="fa fa-phone-alt mr-2"></i>{{$global_settings->phone }}
+                </p>
+                <p class="font-weight-medium">
+                    <i class="fa fa-envelope mr-2"></i>{{$global_settings->email}}
+                </p>
+                <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">
+                    Suivez nous
+                </h6>
+            @endif
             <div class="d-flex justify-content-start">
                 <ul class="d-flex justify-content-start">
                     @foreach($global_social as $item)
