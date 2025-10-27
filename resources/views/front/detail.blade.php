@@ -157,67 +157,72 @@
     <!-- Comment List End -->
 
     <!-- Comment Form Start -->
-    <div class="mb-3">
-        <div class="section-title mb-0">
-            <h4 class="m-0 text-uppercase font-weight-bold">
-                Laissez un commentaire
-            </h4>
-        </div>
-
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{session('success')}}
+    @if($article_detail->isComment)
+        <div class="mb-3">
+            <div class="section-title mb-0">
+                <h4 class="m-0 text-uppercase font-weight-bold">
+                    Laissez un commentaire
+                </h4>
             </div>
-        @endif
-        <div class="bg-white border border-top-0 p-4">
-            <form action="{{route('comment',$article_detail->id)}}" method="POST">
-                @csrf
-                <div class="form-row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="name">Nom *</label>
-                            <input type="text" class="form-control" id="name" value="{{old('name')}}" name="name"/>
-                            @error('name')
-                                <p class="text-danger mt-2">{{$message}}</p>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" class="form-control" name="email" value="{{old('email')}}" id="email" />
-                            @error('email')
-                            <p class="text-danger mt-2">{{$message}}</p>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="website">Site web</label>
-                    <input type="url" class="form-control" name="web_site" id="website" />
-                </div>
 
-                <div class="form-group">
-                    <label for="message">Commentaire *</label>
-                    <textarea
-                        id="message"
-                        cols="30"
-                        rows="5"
-                        name="message"
-                        class="form-control"
-                    ></textarea>
-                    @error('message')
-                    <p class="text-danger mt-2">{{$message}}</p>
-                    @enderror
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{session('success')}}
                 </div>
-                <div class="form-group mb-0">
-                    <input
-                        type="submit"
-                        value="Laissez un commentaires"
-                        class="btn btn-info font-weight-semi-bold py-2 px-3"
-                    />
-                </div>
-            </form>
+            @endif
+            <div class="bg-white border border-top-0 p-4">
+                <form action="{{route('comment',$article_detail->id)}}" method="POST">
+                    @csrf
+                    <div class="form-row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name">Nom *</label>
+                                <input type="text" class="form-control" id="name" value="{{old('name')}}" name="name"/>
+                                @error('name')
+                                <p class="text-danger mt-2">{{$message}}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" class="form-control" name="email" value="{{old('email')}}" id="email" />
+                                @error('email')
+                                <p class="text-danger mt-2">{{$message}}</p>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="website">Site web</label>
+                        <input type="url" class="form-control" name="web_site" id="website" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Commentaire *</label>
+                        <textarea
+                            id="message"
+                            cols="30"
+                            rows="5"
+                            name="message"
+                            class="form-control"
+                        ></textarea>
+                        @error('message')
+                        <p class="text-danger mt-2">{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-0">
+                        <input
+                            type="submit"
+                            value="Laissez un commentaires"
+                            class="btn btn-info font-weight-semi-bold py-2 px-3"
+                        />
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    @else
+        <p> Les commentaires sont bloqués sur ce post</p>
+    @endif
+
 @endsection

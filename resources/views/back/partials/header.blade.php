@@ -3,7 +3,10 @@
         <a href="{{route('dashboard')}}" class="logo">
             <img
                 class="rounded-circle"
-                src="{{asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image)}}"
+                src={{ Auth::user()->image
+                                ? asset('back_auth/assets/profile/' . Auth::user()->image)
+                                : asset('back_auth/assets/img/logo.png')
+                              }}
                 width="80"
                 height="80"
                 alt="logo"
@@ -12,7 +15,10 @@
         </a>
         <a href="{{'profile.edit'}}" class="logo logo-small">
             <img
-                src="{{asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image)}}"
+                src={{ Auth::user()->image
+                                ? asset('back_auth/assets/profile/' . Auth::user()->image)
+                                : asset('back_auth/assets/img/logo.png')
+                              }}
                 alt="Logo"
                 width="40"
                 height="40"
@@ -31,7 +37,10 @@
               <span class="user-img"
               ><img
                       class="rounded-circle"
-                      src="{{asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image)}}"
+                      src="{{ Auth::user()->image
+                                ? asset('back_auth/assets/profile/' . Auth::user()->image)
+                                : asset('back_auth/assets/img/logo.png')
+                              }}"
                       width="31"
                       alt="{{\Illuminate\Support\Facades\Auth::user()->name}}"
                   /></span>

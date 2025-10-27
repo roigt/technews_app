@@ -52,6 +52,7 @@ public function getSlugOptions(): SlugOptions
     }
 
     public function comments(): HasMany{
-        return $this->hasMany(Comment::class, 'article_id','id');
+        return $this->hasMany(Comment::class, 'article_id','id')
+                    ->where('isActive',1);
     }
 }

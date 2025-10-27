@@ -13,6 +13,7 @@ class DetailController extends Controller
         $article=Article::where('slug',$slug)->with(['comments' => function($q) {
             $q->orderBy('created_at', 'desc');
         }])->first();
+
         $new_view = $article->views +1;
         $article->views=$new_view;
         $article->update();

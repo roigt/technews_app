@@ -69,9 +69,14 @@ Route::resource('/social',SocialMediaController::class)->middleware('admin');
 
 **/
 
+//partie commentaire
+Route::resource('/comment',CommentController::class);
+Route::put('/comment/active/{comment}', [CommentController::class, 'active'])
+    ->name('comment.active');
 /**
  * partie parametre
  */
 
 Route::get('/parametre',[SettingsController::class,'index'])->name('settings.index')->middleware('admin');
 Route::put('/parametre',[SettingsController::class,'update'])->name('settings.update')->middleware('admin');
+
