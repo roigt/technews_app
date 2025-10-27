@@ -3,10 +3,10 @@
         <a href="{{route('dashboard')}}" class="logo">
             <img
                 class="rounded-circle"
-                src={{ Auth::user()->image
-                                ? asset('back_auth/assets/profile/' . Auth::user()->image)
+                src="{{Auth::user()->image
+                                ? Storage::disk('s3')->url(Auth::user()->image)
                                 : asset('back_auth/assets/img/logo.png')
-                              }}
+                              }}"
                 width="80"
                 height="80"
                 alt="logo"
@@ -15,14 +15,15 @@
         </a>
         <a href="{{'profile.edit'}}" class="logo logo-small">
             <img
-                src={{ Auth::user()->image
-                                ? asset('back_auth/assets/profile/' . Auth::user()->image)
+                src="{{ Auth::user()->image
+                                ? Storage::disk('s3')->url(Auth::user()->image)
                                 : asset('back_auth/assets/img/logo.png')
-                              }}
+                              }}"
                 alt="Logo"
                 width="40"
                 height="40"
             />
+
 
         </a>
     </div>
@@ -38,10 +39,11 @@
               ><img
                       class="rounded-circle"
                       src="{{ Auth::user()->image
-                                ? asset('back_auth/assets/profile/' . Auth::user()->image)
+                                ?  Storage::disk('s3')->url(Auth::user()->image)
                                 : asset('back_auth/assets/img/logo.png')
                               }}"
                       width="31"
+
                       alt="{{\Illuminate\Support\Facades\Auth::user()->name}}"
                   /></span>
             </a>
@@ -49,9 +51,13 @@
                 <div class="user-header">
                     <div class="avatar avatar-sm">
                         <img
-                            src="{{asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image)}}"
+                            src="{{ Auth::user()->image
+                                ?  Storage::disk('s3')->url(Auth::user()->image)
+                                : asset('back_auth/assets/img/logo.png')
+                              }}"
                             alt="User Image"
                             class="avatar-img rounded-circle"
+
                         />
                     </div>
                     <div class="user-text">

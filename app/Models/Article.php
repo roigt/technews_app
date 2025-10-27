@@ -39,7 +39,8 @@ public function getSlugOptions(): SlugOptions
 
     public function getImageUrl(): string
     {
-        return Storage::url($this->image);
+        //return Storage::url($this->image);
+        return Storage::disk('s3')->url($this->image);
     }
 
     public function category(): BelongsTo

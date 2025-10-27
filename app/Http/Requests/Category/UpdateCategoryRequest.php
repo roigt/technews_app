@@ -27,4 +27,11 @@ class UpdateCategoryRequest extends FormRequest
             'isActive' => ['boolean'],
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'name.required'    => "Le nom de la catégorie est obligatoire." ,
+        ];
+    }
+
 }

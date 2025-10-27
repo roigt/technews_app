@@ -47,7 +47,8 @@ class ArticleController extends Controller
         //gestion image avec storage
         $image = $request->image;
         if($image!=null && !$request->file('image')->getError()){
-            $image= $request->image->store('asset','public');
+            //$image= $request->image->store('asset','public');
+            $image = $request->file('image')->store('articles', 's3');
         }
         //fin  et en deploiement toujours lancer "php artisan storage:link" pour lier le dossier storage/app/public à app/public
 
@@ -103,9 +104,11 @@ class ArticleController extends Controller
         $image = $request->image;
         if($image!=null && !$request->file('image')->getError()){
             if($article->image){//supprimer l ancien image
-                Storage::disk('public')->delete($article->image);
+               // Storage::disk('public')->delete($article->image);
+                Storage::disk('s3')->delete($article->image);
             }
-            $image= $request->image->store('asset','public');
+           // $image= $request->image->store('asset','public');
+            $image = $request->file('image')->store('articles', 's3');
         }
         //fin
 
@@ -135,6 +138,7 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
+        Storage::disk('s3')->delete($article->image);
         return back()->with('success','Article deleted successfully');
     }
 }

@@ -30,4 +30,11 @@ class SettingsRequest extends FormRequest
             'about'=>['required','string'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'web_site_name.required'    => "Le nom du site est obligatoire." ,
+        ];
+    }
 }

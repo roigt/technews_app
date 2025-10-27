@@ -22,8 +22,19 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name',
-            'email'
+            'name'=>'required|string',
+            'email'=>'required|string|email|unique:users,email',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required'    => "Le nom du réseau social est obligatoire." ,
+            'email.required'    => "Le lien est obligatoire.",
+            'email.email'       => "L'adresse email est invalide.",
+        ];
+    }
+
+
 }

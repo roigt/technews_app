@@ -38,7 +38,16 @@
             <div class="profile-header">
                 <div class="row align-items-center">
                     <div class="col-auto profile-image">
-                        <a href="#"> <img class="rounded-circle" alt="User Image" src="{{asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image)}}"> </a>
+                        <a href="#">
+                           {{--  <img class="rounded-circle" alt="User Image" src="{{asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image)}}"> --}}
+                            <img class="rounded-circle" alt="User Image"
+                                 src="{{ Auth::user()->image
+                                ? Storage::disk('s3')->url(Auth::user()->image)
+                                : asset('back_auth/assets/img/logo.png')
+                              }}"
+                            >
+
+                        </a>
                     </div>
                     <div class="col ml-md-n2 profile-user-info">
                         <h4 class="user-name mb-3">{{\Illuminate\Support\Facades\Auth::user()->name}}</h4>

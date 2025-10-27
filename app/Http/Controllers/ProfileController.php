@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -33,13 +34,17 @@ class ProfileController extends Controller
         }
 
         if($request->hasFile('image')) {
-             if(file_exists(public_path('back_auth/assets/profile' . $request->user()->image)) AND !empty($request->user()->image)) {
-                 unlink(public_path('back_auth/assets/profile' . $request->user()->image));
-             }
-            $ext=$request->file('image')->extension();
-            $filename=date('YmdHis').'.'.$ext;
-            $request->file('image')->move(public_path('back_auth/assets/profile'), $filename);
-            $request->user()->image = $filename;
+//
+//             if(file_exists(public_path('back_auth/assets/profile' . $request->user()->image)) AND !empty($request->user()->image)) {
+//                 unlink(public_path('back_auth/assets/profile' . $request->user()->image));
+//             }
+//            $ext=$request->file('image')->extension();
+//            $filename=date('YmdHis').'.'.$ext;
+//            $request->file('image')->move(public_path('back_auth/assets/profile'), $filename);
+//            $request->user()->image = $filename;
+
+              $request->user()->image = $request->file('image')->store('profiles', 's3');
+
         }
 
         $request->user()->name=$request->name;
@@ -59,6 +64,8 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
+        //supprime l image de l utilisateur
+        Storage::disk('s3')->delete($user->image);
 
         Auth::logout();
 

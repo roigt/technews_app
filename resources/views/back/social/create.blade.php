@@ -14,6 +14,15 @@
 @section('dashboard-content')
     <div class="row">
         <div class="col-lg-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{isset($social)? route('social.update',$social): route('social.store')}}" method="POST">
                 @csrf
                 @isset($social)
@@ -29,6 +38,9 @@
                                 name="name"
                                 value="{{isset($social)? old('name',$social->name): old('name')  }}"
                             />
+                            @error('name')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 

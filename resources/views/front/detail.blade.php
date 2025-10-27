@@ -68,7 +68,10 @@
             <div class="d-flex align-items-center">
                 <img
                     class="rounded-circle mr-2"
-                    src="{{asset('back_auth/assets/profile'.$article_detail->author->image)}}"
+                    src="{{ $article_detail->author->image
+                                           ? Storage::disk('s3')->url($article_detail->author->image)
+                                           : asset('back_auth/assets/img/logo.png')
+                                       }}"
                     width="25"
                     height="25"
                     alt=""
@@ -99,7 +102,7 @@
                 {{--Affiche seulement les 4 premiers --}}
                 @foreach($article_detail->comments->take($maxVisible) as $comment)
                     <div class="media mb-4">
-                        <img src="{{asset('back_auth/assets/img/logo.png')}}" class="img-fluid mr-3 mt-1" style="width: 45px" />
+                        <img src="{{asset('back_auth/assets/img/logo.png')}}" alt="user" class="img-fluid mr-3 mt-1" style="width: 45px"/>
                         <div class="media-body">
                             <h6>
                                 <a class="text-secondary font-weight-bold" href="">{{ $comment->name }}</a>

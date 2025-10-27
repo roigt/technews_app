@@ -165,7 +165,7 @@
                     <a
                         class="text-secondary font-weight-medium text-decoration-none"
                         href=""
-                    >Voire tous</a
+                    >Voir tous</a
                     >
                 </div>
             </div>
@@ -203,9 +203,10 @@
                                     <img
                                         class="rounded-circle mr-2"
                                         src=" {{ $article->author->image
-                                            ? asset('back_auth/assets/profile/' . $article->author->image)
+                                            ? Storage::disk('s3')->url($article->author->image)
                                             : asset('back_auth/assets/img/logo.png')
                                         }}"
+
                                         width="25"
                                         height="25"
                                         alt="img"

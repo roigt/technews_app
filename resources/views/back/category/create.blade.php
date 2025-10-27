@@ -25,6 +25,15 @@
                 @if(isset($category))
                     @method('PUT')
                 @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row formtype">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -36,6 +45,9 @@
                                 value="{{isset($category) ? old('name',$category->name):old('name')}}"
                             />
                         </div>
+                        @error('name')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="col-md-4">
@@ -50,6 +62,7 @@
                                {{isset($category) ? old('name',$category->description):old('description')}}
 
                             </textarea>
+
                         </div>
                     </div>
 

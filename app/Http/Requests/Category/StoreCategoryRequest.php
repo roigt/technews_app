@@ -22,9 +22,16 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['string', 'max:255'],
+            'name' => ["required",'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'isActive' => ['boolean'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required'    => "Le nom de la catégorie est obligatoire." ,
         ];
     }
 }

@@ -24,12 +24,20 @@ class UpdateArticleRequest extends FormRequest
         return [
             'title' =>['required','string','max:255'],
             'description' =>['required','string'],
-            'image' =>['required','file','mimes:jpeg,jpg,png,gif','max:2048','nullable'],
+            'image' =>['file','mimes:jpeg,jpg,png,gif','max:3048','nullable'],
             'isComment' =>['required','boolean'],
             'isSharable' =>['required','boolean'],
             'isActive' =>['required','boolean'],
             'category_id' =>['required','integer','exists:categories,id'],
             'tags' =>['string','nullable'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'title.required'    => 'Le titre est obligatoire.',
+            'description.required'   => 'La description est obligatoire.',
         ];
     }
 }

@@ -23,6 +23,11 @@ class PasswordController extends Controller
         $validated = $request->validate([
             'current_password' => ['required', 'current_password'],
             'password' => ['required', Password::defaults(), 'confirmed'],
+        ],[
+            'current_password.required' => 'Le mot de passe actuel est obligatoire.',
+            'current_password.current_password' => 'Le mot de passe actuel est incorrect.',
+            'password.required' => 'Le nouveau mot de passe est obligatoire.',
+            'password.confirmed' => 'Le nouveau mot de passe et sa confirmation ne correspondent pas.',
         ]);
 
 

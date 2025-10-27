@@ -19,6 +19,15 @@
 @section('dashboard-content')
     <div class="row">
         <div class="col-lg-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{isset($author) ? route('author.update',$author): route('author.store')}}" method="POST">
                 @csrf
                 @if(isset($author))
@@ -34,6 +43,9 @@
                                 name="name"
                                 value="{{isset($author)? old('name',$author->name): old('name')}}"
                             />
+                            @error('name')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -41,10 +53,13 @@
                             <label>Email</label>
                             <input
                                 class="form-control"
-                                type="text"
+                                type="email"
                                 name="email"
                                 value="{{isset($author) ? old('email',$author->email): old('email')}}"
                             />
+                            @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>

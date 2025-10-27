@@ -29,4 +29,13 @@ class ProfileUpdateRequest extends FormRequest
             'image' => ['nullable', 'image', 'mimes:jpeg,jpg,png,gif', 'max:2048'],
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'name.required'    => "Le nom  est obligatoire." ,
+            'email.required'    => "L'email est obligatoire.",
+            'email.email'       => "L'email est invalide.",
+        ];
+    }
+
 }

@@ -27,4 +27,12 @@ class StoreSocialMediaRequest extends FormRequest
             'icon' => ['required','string'],
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'name.required'    => "Le nom du réseau social est obligatoire." ,
+            'link.required'    => "Le lien est obligatoire.",
+            'icon.required'       => "Le nom de l icon est invalide.",
+        ];
+    }
 }

@@ -24,13 +24,21 @@ class StoreArticleRequest extends FormRequest
         return [
             'title' =>['required','string','max:255'],
             'description' =>['required','string'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,jpg,png,gif', 'max:2048'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,jpg,png,gif', 'max:3048'],
             'isComment' =>['required','boolean'],
             'isSharable' =>['required','boolean'],
             'isActive' =>['required','boolean'],
             'category_id' =>['required','integer','exists:categories,id'],
             'tags' =>['string','nullable'],
 
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'title.required'    => 'Le titre est obligatoire.',
+            'description.required'   => 'La description est obligatoire.',
         ];
     }
 }

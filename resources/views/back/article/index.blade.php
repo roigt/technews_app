@@ -38,6 +38,7 @@
                             @foreach($articles as $article)
                                 <tr>
                                     <td>{{$article->id}}</td>
+                                   {{-- <td><img src="{{$article->getImageUrl()}}"  alt="article->title" width="100" height="100"/></td>--}}
                                     <td><img src="{{$article->getImageUrl()}}"  alt="article->title" width="100" height="100"/></td>
                                     <td>{{$article->title}}</td>
                                     <td>{{$article->category->name}}</td>
