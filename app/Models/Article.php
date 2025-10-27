@@ -37,10 +37,10 @@ public function getSlugOptions(): SlugOptions
             return 'slug';
     }
 
-    public function getImageUrl(): string
+    public function getImageUrl()
     {
         //return Storage::url($this->image);
-        return Storage::disk('s3')->url($this->image);
+        return Storage::disk('s3')->url($this->image)? Storage::disk('s3')->url($this->image):asset('back_auth/assets/img/logo.png');
     }
 
     public function category(): BelongsTo
