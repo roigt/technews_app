@@ -3,10 +3,14 @@
 use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Detail\DetailController;
+use App\Http\Controllers\FrontCategoryController;
+use App\Http\Controllers\FrontContactController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\settings\SettingsController;
 use App\Http\Controllers\SocialMedia\SocialMediaController;
 use App\Http\Controllers\UserController;
@@ -23,6 +27,18 @@ Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('article.
 
 //commentaires
 Route::post('/comment/{id}', [DetailController::class, 'comment'])->name('comment');
+
+//categories front
+Route::get('/category/{slug}',[FrontCategoryController::class, 'index'])->name('category.article');
+
+//recherches
+Route::post('/recherches',[SearchController::class,'index'])->name('search');
+
+
+
+Route::get ('/front/contact',[FrontContactController::class, 'index'])->name('front.contact');
+Route::post('/front/contact/send',[FrontContactController::class, 'contact'])->name('contact.send');
+
 
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth', 'verified','checkRole:admin,author'])->name('dashboard');
 
@@ -80,3 +96,8 @@ Route::put('/comment/active/{comment}', [CommentController::class, 'active'])
 Route::get('/parametre',[SettingsController::class,'index'])->name('settings.index')->middleware('admin');
 Route::put('/parametre',[SettingsController::class,'update'])->name('settings.update')->middleware('admin');
 
+
+/**
+ * partie contact admin
+ */
+Route::resource('/contact',ContactController::class)->middleware('admin');

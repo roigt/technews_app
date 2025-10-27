@@ -31,27 +31,33 @@
                     >
                     <div class="dropdown-menu rounded-0 m-0">
                         @foreach($global_category as $category)
-                            <a href="category.html" class="dropdown-item">{{$category->name}}</a>
+                            <a href="{{route('category.article',$category->slug)}}" class="dropdown-item">{{$category->name}}</a>
                         @endforeach
                     </div>
                 </div>
                 <a class="nav-item nav-link" href="{{route('login')}}">Login</a>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="{{route('front.contact')}}" class="nav-item nav-link">Contact</a>
             </div>
             <div
                 class="input-group ml-auto d-none d-lg-flex"
                 style="width: 100%; max-width: 300px"
             >
-                <input
-                    type="text"
-                    class="form-control border-0"
-                    placeholder="Rechercher..."
-                />
-                <div class="input-group-append">
-                    <button class="input-group-text bg-info text-dark border-0 px-3">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
+                <form action="{{route('search')}}" method="POST">
+                    @csrf
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            name="search_key"
+                            class="form-control border-0"
+                            placeholder="Rechercher..."
+                        />
+                        <div class="input-group-append">
+                            <button type="submit" class="input-group-text bg-info text-dark border-0 px-3">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>

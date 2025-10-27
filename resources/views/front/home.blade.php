@@ -55,7 +55,7 @@
                                 <div class="mb-2">
                                     <a
                                         class="badge badge-info text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href=""
+                                        href="{{route('category.article',$article->category->slug)}}"
                                     >{{$article->category->name}}</a
                                     >
                                     <a class="text-white" href="">
@@ -98,7 +98,7 @@
                                     <div class="mb-2">
                                         <a
                                             class="badge badge-info text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href=""
+                                            href="{{route('category.article',$article->category->slug)}}"
                                         >{{$article->category->name}}</a
                                         >
                                         <a class="text-white" href="">
@@ -138,9 +138,8 @@
                             <div class="mb-2">
                                 <a
                                     class="badge badge-info text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href=""
-                                >{{$article->category->name}}</a
-                                >
+                                    href="{{route('category.article',$article->category->slug)}}"
+                                >{{$article->category->name}}</a>
                                 <a class="text-white" href="">
                                     @php $time= $article->created_at @endphp
                                     <small>{{$time->isoFormat('LL')}}</small>

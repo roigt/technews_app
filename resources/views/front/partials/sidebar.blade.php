@@ -113,7 +113,7 @@
                         <div class="mb-2">
                             <a
                                 class="badge badge-info text-uppercase font-weight-semi-bold p-1 mr-2"
-                                href=""
+                                href="{{route('category.article',$article->category->slug)}}"
                             >{{$article->category->name}}</a
                             >
                             <a class="text-body" href="">

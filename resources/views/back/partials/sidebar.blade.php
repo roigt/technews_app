@@ -68,7 +68,7 @@
                     </li>
 
                     <li>
-                        <a href="all-contacts.html"
+                        <a href="{{route('contact.index')}}"
                         ><i class="fe fe-table"></i> <span>Contacts</span></a
                         >
                     </li>
