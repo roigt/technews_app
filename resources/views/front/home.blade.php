@@ -202,10 +202,13 @@
                                 <div class="d-flex align-items-center">
                                     <img
                                         class="rounded-circle mr-2"
-                                        src="{{asset('back_auth/assets/profile'.$article->author->image)}}"
+                                        src=" {{ $article->author->image
+                                            ? asset('back_auth/assets/profile/' . $article->author->image)
+                                            : asset('back_auth/assets/img/logo.png')
+                                        }}"
                                         width="25"
                                         height="25"
-                                        alt=""
+                                        alt="img"
                                     />
                                     <small>{{$article->author->name}}</small>
                                 </div>
