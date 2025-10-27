@@ -9,8 +9,8 @@
                 <h4 class="card-title float-left mt-2">Categories</h4>
                 <a
                     href="{{route('category.create')}}"
-                    class="btn btn-primary float-right veiwbutton"
-                >Ajouter une categorie
+                    class="btn btn-primary float-right viewbutton"
+                >Ajouter une categorieph
 
                 </a>
             </div>

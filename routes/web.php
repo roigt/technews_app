@@ -29,7 +29,7 @@ Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('article.
 Route::post('/comment/{id}', [DetailController::class, 'comment'])->name('comment');
 
 //categories front
-Route::get('/category/{slug}',[FrontCategoryController::class, 'index'])->name('category.article');
+Route::get('/categories/{slug}',[FrontCategoryController::class, 'index'])->name('category.article');
 
 //recherches
 Route::post('/recherches',[SearchController::class,'index'])->name('search');
