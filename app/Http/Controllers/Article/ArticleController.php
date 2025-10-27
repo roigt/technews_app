@@ -110,7 +110,7 @@ class ArticleController extends Controller
            // $image= $request->image->store('asset','public');
             $image = $request->file('image')->store('articles', 's3');
         }
-        //fin
+        //fin gestion image
 
         $tags = explode(',',$request->tags);
 
