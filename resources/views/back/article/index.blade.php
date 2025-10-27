@@ -73,7 +73,12 @@
                                     <td>
                                         <h2 class="table-avatar">
                                             <a href="profile.html" class="avatar avatar-sm mr-2">
-                                                <img class="avatar-img rounded-circle" src="{{asset('back_auth/assets/profile/'.$article->author->image)}}" alt="User Image">
+                                                <img class="avatar-img rounded-circle"
+                                                     src="{{ $article->author->image
+                                                            ? Storage::disk('s3')->url($article->author->image)
+                                                            : asset('back_auth/assets/img/logo.png')
+                                                        }}"
+                                                     alt="User Image">
                                             </a>
                                             <a href="profile.html">{{$article->author->name}} <span>#0001</span></a>
                                         </h2>
