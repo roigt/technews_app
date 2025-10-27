@@ -37,7 +37,7 @@ public function getSlugOptions(): SlugOptions
             return 'slug';
     }
 
-    public function getImageUrl()
+    public function getImageUrl():string
     {
         //return Storage::url($this->image);
         return Storage::disk('s3')->url($this->image)? Storage::disk('s3')->url($this->image):asset('back_auth/assets/img/logo.png');

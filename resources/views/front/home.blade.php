@@ -40,11 +40,17 @@
                             @break
                         @endif
                         <div class="position-relative overflow-hidden" style="height: 500px">
-                            <img
-                                class="img-fluid h-100"
-                                src="{{$article->getImageUrl()}}"
-                                style="object-fit: cover"
-                            />
+                            @if($article->getImageUrl())
+                                <img
+                                    class="img-fluid h-100"
+                                    src="{{$article->getImageUrl()}}"
+                                    style="object-fit: cover"
+                                    alt="{{$article->name}}"
+                                />
+                            @else
+                                <span>Pas d'image</span>
+                            @endif
+
                             <div class="overlay">
                                 <div class="mb-2">
                                     <a
