@@ -2,7 +2,7 @@
 @section('title','Technews - Categorie')
 @section('main_section')
     <div class="row">
-        @if($category->article)
+
             @foreach($category->articles as $article)
                 <div class="col-lg-6">
                     <div class="position-relative mb-3">
@@ -55,9 +55,7 @@
                     </div>
                 </div>
             @endforeach
-        @else
-            <p>Il n'y a pas d'articles pour cette catégorie</p>
-        @endif
+
 
 
 
