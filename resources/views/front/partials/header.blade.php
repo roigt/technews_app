@@ -8,6 +8,11 @@
             </h1>
         </a>
 
+        <!-- BOUTON HAMBURGER -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div
             class="collapse navbar-collapse justify-content-between px-0 px-lg-3"
             id="navbarCollapse"
