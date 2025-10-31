@@ -1,5 +1,6 @@
 @extends('front.app')
 
+@section('title','Technews - Details')
 @section('breacking_news')
     <div class="container-fluid mt-5 mb-3 pt-3">
         <div class="container">
@@ -87,6 +88,9 @@
         </div>
     </div>
     <!-- News Detail End -->
+    @if($article_detail->isSharable)
+        <div class="sharethis-inline-share-buttons"></div>
+    @endif
 
     <!-- Comment List Start -->
     @php $maxVisible = 4; @endphp

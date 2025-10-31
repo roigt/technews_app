@@ -97,41 +97,41 @@
         </div>
 
         <div class="bg-white border border-top-0 p-3">
-            @foreach($global_recent_articles as $article)
-                <div
-                    class="d-flex align-items-center bg-white mb-3"
-                    style="height: 110px"
-                >
-                    <img
-                        src="{{ $article->getImageUrl() }}"
-                        alt=""
-                        style="width: 100px; height: 100%; object-fit: cover;"
-                    />
+            @if(count($global_recent_articles))
+                @foreach($global_recent_articles as $article)
                     <div
-                        class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0"
+                        class="d-flex align-items-center bg-white mb-3"
+                        style="height: 110px"
                     >
-                        <div class="mb-2">
-                            <a
-                                class="badge badge-info text-uppercase font-weight-semi-bold p-1 mr-2"
-                                href="{{route('category.article',$article->category->slug)}}"
-                            >{{$article->category->name}}</a
-                            >
-                            <a class="text-body" href="">
-                                @php $time= $article->created_at @endphp
-                                <small>{{$time->isoFormat('LL')}}</small>
-                            </a>
-                        </div>
-                        <a
-                            class="h6 m-0 text-secondary text-uppercase font-weight-bold"
-                            style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden"
-                            href=""
-                        >{{$article->title}}</a
+                        <img
+                            src="{{ $article->getImageUrl() }}"
+                            alt=""
+                            style="width: 100px; height: 100%; object-fit: cover;"
+                        />
+                        <div
+                            class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0"
                         >
+                            <div class="mb-2">
+                                <a
+                                    class="badge badge-info text-uppercase font-weight-semi-bold p-1 mr-2"
+                                    href="{{route('category.article',$article->category->slug)}}"
+                                >{{$article->category->name}}</a
+                                >
+                                <a class="text-body" href="">
+                                    @php $time= $article->created_at @endphp
+                                    <small>{{$time->isoFormat('LL')}}</small>
+                                </a>
+                            </div>
+                            <a
+                                class="h6 m-0 text-secondary text-uppercase font-weight-bold"
+                                style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden"
+                                href="{{route('article.detail',$article->slug)}}"
+                            >{{$article->title}}</a
+                            >
+                        </div>
                     </div>
-                </div>
-            @endforeach
-
-
+                @endforeach
+            @endif
         </div>
     </div>
     <!-- Popular News fin -->

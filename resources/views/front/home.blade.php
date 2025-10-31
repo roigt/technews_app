@@ -1,5 +1,7 @@
 @extends('front.app')
 
+@section('title','Technews - Accueil')
+
 @section('breacking_news')
     <div class="container-fluid bg-dark py-3 mb-3">
         <div class="container">
@@ -14,14 +16,15 @@
                         </div>
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
                             style="width: calc(100% - 170px); padding-right: 90px">
-                            @foreach($articles as $article)
-                                <div class="text-truncate">
-                                    <a class="text-white text-uppercase font-weight-semi-bold"
-                                       href="{{route('article.detail',$article->slug)}}">{{$article->title}}
-                                    </a>
-                                </div>
-                            @endforeach
-
+                            @if(count($articles))
+                                @foreach($articles as $article)
+                                    <div class="text-truncate">
+                                        <a class="text-white text-uppercase font-weight-semi-bold"
+                                           href="{{route('article.detail',$article->slug)}}">{{$article->title}}
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -35,65 +38,23 @@
         <div class="row">
             <div class="col-lg-7 px-0">
                 <div class="owl-carousel main-carousel position-relative">
-                    @foreach($articles as $article)
-                        @if($loop->iteration ===4 )
-                            @break
-                        @endif
-                        <div class="position-relative overflow-hidden" style="height: 500px">
-                            @if($article->getImageUrl())
-                                <img
-                                    class="img-fluid h-100"
-                                    src="{{$article->getImageUrl()}}"
-                                    style="object-fit: cover"
-                                    alt="{{$article->name}}"
-                                />
-                            @else
-                                <span>Pas d'image</span>
+                    @if(count($articles))
+                        @foreach($articles as $article)
+                            @if($loop->iteration ===4 )
+                                @break
                             @endif
+                            <div class="position-relative overflow-hidden" style="height: 500px">
+                                @if($article->getImageUrl())
+                                    <img
+                                        class="img-fluid h-100"
+                                        src="{{$article->getImageUrl()}}"
+                                        style="object-fit: cover"
+                                        alt="{{$article->name}}"
+                                    />
+                                @else
+                                    <span>Pas d'image</span>
+                                @endif
 
-                            <div class="overlay">
-                                <div class="mb-2">
-                                    <a
-                                        class="badge badge-info text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="{{route('category.article',$article->category->slug)}}"
-                                    >{{$article->category->name}}</a
-                                    >
-                                    <a class="text-white" href="">
-                                        @php $time= $article->created_at @endphp
-                                        {{$time->isoFormat('LL')}}
-                                    </a>
-                                </div>
-                                <a
-                                    class="h2 m-0 text-white text-uppercase font-weight-bold"
-                                    href="{{route('article.detail',$article->slug)}}"
-                                >{{$article->title}}</a
-                                >
-                            </div>
-                        </div>
-                    @endforeach
-
-                </div>
-            </div>
-            <div class="col-lg-5 px-0">
-                <div class="row mx-0">
-                    @foreach($articles as $article)
-                        @if($loop->iteration<5)
-                            @continue
-                        @endif
-
-                        @if($loop->iteration===9)
-
-                        @endif
-                        <div class="col-md-6 px-0">
-                            <div
-                                class="position-relative overflow-hidden"
-                                style="height: 250px"
-                            >
-                                <img
-                                    class="img-fluid w-100 h-100"
-                                    src="{{$article->getImageUrl()}}"
-                                    style="object-fit: cover"
-                                />
                                 <div class="overlay">
                                     <div class="mb-2">
                                         <a
@@ -103,16 +64,63 @@
                                         >
                                         <a class="text-white" href="">
                                             @php $time= $article->created_at @endphp
-                                            <small>{{$time->isoFormat('LL')}}</small>
+                                            {{$time->isoFormat('LL')}}
                                         </a>
                                     </div>
-                                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{route('article.detail',$article->slug)}}"
-                                    >{{$article->title}}
-                                    </a>
+                                    <a
+                                        class="h2 m-0 text-white text-uppercase font-weight-bold"
+                                        href="{{route('article.detail',$article->slug)}}"
+                                    >{{$article->title}}</a
+                                    >
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+
+                    @endif
+
+                </div>
+            </div>
+            <div class="col-lg-5 px-0">
+                <div class="row mx-0">
+                    @if(count($articles))
+                        @foreach($articles as $article)
+                            @if($loop->iteration<5)
+                                @continue
+                            @endif
+
+                            @if($loop->iteration===9)
+
+                            @endif
+                            <div class="col-md-6 px-0">
+                                <div
+                                    class="position-relative overflow-hidden"
+                                    style="height: 250px"
+                                >
+                                    <img
+                                        class="img-fluid w-100 h-100"
+                                        src="{{$article->getImageUrl()}}"
+                                        style="object-fit: cover"
+                                    />
+                                    <div class="overlay">
+                                        <div class="mb-2">
+                                            <a
+                                                class="badge badge-info text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                href="{{route('category.article',$article->category->slug)}}"
+                                            >{{$article->category->name}}</a
+                                            >
+                                            <a class="text-white" href="">
+                                                @php $time= $article->created_at @endphp
+                                                <small>{{$time->isoFormat('LL')}}</small>
+                                            </a>
+                                        </div>
+                                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{route('article.detail',$article->slug)}}"
+                                        >{{$article->title}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
 
                 </div>
             </div>
@@ -127,32 +135,35 @@
                 <h4 class="m-0 text-uppercase font-weight-bold">Populaires</h4>
             </div>
             <div class="owl-carousel news-carousel carousel-item-4 position-relative">
-                @foreach($famous_articles as $article)
-                    <div class="position-relative overflow-hidden" style="height: 300px">
-                        <img
-                            class="img-fluid h-100 "
-                            src="{{$article->getImageUrl()}}"
-                            style="object-fit: cover"
-                        />
-                        <div class="overlay">
-                            <div class="mb-2">
+                @if($famous_articles)
+                    @foreach($famous_articles as $article)
+                        <div class="position-relative overflow-hidden" style="height: 300px">
+                            <img
+                                class="img-fluid h-100 "
+                                src="{{$article->getImageUrl()}}"
+                                style="object-fit: cover"
+                            />
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a
+                                        class="badge badge-info text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="{{route('category.article',$article->category->slug)}}"
+                                    >{{$article->category->name}}</a>
+                                    <a class="text-white" href="">
+                                        @php $time= $article->created_at @endphp
+                                        <small>{{$time->isoFormat('LL')}}</small>
+                                    </a>
+                                </div>
                                 <a
-                                    class="badge badge-info text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="{{route('category.article',$article->category->slug)}}"
-                                >{{$article->category->name}}</a>
-                                <a class="text-white" href="">
-                                    @php $time= $article->created_at @endphp
-                                    <small>{{$time->isoFormat('LL')}}</small>
-                                </a>
+                                    class="h6 m-0 text-white text-uppercase font-weight-semi-bold"
+                                    href="{{route('article.detail',$article->slug)}}"
+                                >{{$article->title}}</a
+                                >
                             </div>
-                            <a
-                                class="h6 m-0 text-white text-uppercase font-weight-semi-bold"
-                                href="{{route('article.detail',$article->slug)}}"
-                            >{{$article->title}}</a
-                            >
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
+
 
             </div>
         </div>
@@ -161,24 +172,25 @@
 
 @section('main_section')
     <div class="row">
-        @foreach($categories as $category)
-            <div class="col-12">
-                <div class="section-title">
-                    <h4 class="m-0 text-uppercase font-weight-bold">
-                        {{$category->name}}
-                    </h4>
-                    <a
-                        class="text-secondary font-weight-medium text-decoration-none"
-                        href=""
-                    >Voir tous</a
-                    >
+        @if(count($categories))
+            @foreach($categories as $category)
+                <div class="col-12">
+                    <div class="section-title">
+                        <h4 class="m-0 text-uppercase font-weight-bold">
+                            {{$category->name}}
+                        </h4>
+                        <a
+                            class="text-secondary font-weight-medium text-decoration-none"
+                            href=""
+                        >Voir tous</a
+                        >
+                    </div>
                 </div>
-            </div>
 
-            @if(count($category->articles)){{--si une categorie ne contient pas d'article ne s affiche pas --}}
-                    @foreach($category->articles as $article)
+                @if(count($category->articles)){{--si une categorie ne contient pas d'article ne s affiche pas --}}
+                @foreach($category->articles as $article)
                     @if($loop->iteration ===3) {{-- afficher que deux articles par categorie--}}
-                        @break
+                    @break
                     @endif
                     <div class="col-lg-6">
                         <div class="position-relative mb-3">
@@ -230,9 +242,11 @@
                         </div>
                     </div>
                 @endforeach
-            @endif
+                @endif
 
 
-        @endforeach
+            @endforeach
+        @endif
+
     </div>
 @endsection

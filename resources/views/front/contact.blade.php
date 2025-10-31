@@ -18,21 +18,21 @@
                     <i class="fa fa-map-marker-alt text-info mr-2"></i>
                     <h6 class="font-weight-bold mb-0">Notre siege</h6>
                 </div>
-                <p class="m-0">121 Avenue de la république, Paris, FRA</p>
+                <p class="m-0">{{$global_settings->address}}</p>
             </div>
             <div class="mb-3">
                 <div class="d-flex align-items-center mb-2">
                     <i class="fa fa-envelope-open text-info mr-2"></i>
                     <h6 class="font-weight-bold mb-0">Envoyez nous un email</h6>
                 </div>
-                <p class="m-0">griezmanjulio@yahoo.com</p>
+                <p class="m-0">{{$global_settings->email}}</p>
             </div>
             <div class="mb-3">
                 <div class="d-flex align-items-center mb-2">
                     <i class="fa fa-phone-alt text-info mr-2"></i>
                     <h6 class="font-weight-bold mb-0">Appelez-nous</h6>
                 </div>
-                <p class="m-0">+33 07 63 92 43 50</p>
+                <p class="m-0">{{$global_settings->phone }}</p>
             </div>
         </div>
         <h6 class="text-uppercase font-weight-bold mb-3">

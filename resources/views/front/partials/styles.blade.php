@@ -16,3 +16,5 @@
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="{{asset('front/css/style.css')}}" rel="stylesheet" />
+
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=690432b18e7d354789934b2c&product=video-share-buttons' async='async'></script>
