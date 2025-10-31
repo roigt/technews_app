@@ -2,7 +2,7 @@
 @section('title','Technews - Categorie')
 @section('main_section')
     <div class="row">
-        @if(count($category->article))
+        @if($category->article)
             @foreach($category->articles as $article)
                 <div class="col-lg-6">
                     <div class="position-relative mb-3">
